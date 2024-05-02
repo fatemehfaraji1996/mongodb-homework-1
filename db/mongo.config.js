@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 const express = require('express')
 const app = express()
-// app.use(app.json())
-const PORT = 3000
+// app.use(express.json())
+const PORT = 8000
 // Connect to a Database using Mongoose and a Connection String
 const db = async () => {
 
   try {
     await mongoose.connect(process.env.URL)
-    app.listen(3000,()=>{
+    app.listen(PORT,()=>{
      console.log("run");
     })
   } catch (error) {
@@ -17,18 +17,6 @@ const db = async () => {
   }
   // write your code here
 };
-
-app.post('/seveAll'),async(req,res)=>{
-  
-  const data =req.body
-  console.log(data);
-  try {
-    await Faculty.insertMany(data)
-    res.statuse(200).json({massage:'all data seve'})
-  } catch (error) {
-    res.send('eror')
-  }
-}
 
 const data = [
   {
@@ -47,6 +35,29 @@ const data = [
     type: 'Full Time',
     qualification: 'Ph.D',
   }]
+app.post('/seve'),async(req,res)=>{
+  const data =req.body
+  console.log(data);
+  try {
+    await Faculty.insertMany(data)
+    res.statuse(200).json({massage:'all data seve'})
+  } catch (error) {
+    res.send('eror')
+  }
+}
+
+app.get('/', async (req, res) => {
+    try {
+      const users = await last.find({});
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  
+})
+
+
+
 
 
 
