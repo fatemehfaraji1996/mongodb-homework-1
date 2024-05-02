@@ -1,5 +1,14 @@
-/*
+const express = require('express')
+const app = express()
+app.use(express.json())
+// const port = 3000
+// app.listen(port,()=>{
+//   console.log('is run');
+// })
+// Q1
 
+
+/*
 1- Store all faculty members in a collection called Faculty in your database.
 
 2- Write a function to retrieve all faculty members from the database using Mongoose.
@@ -25,6 +34,19 @@ Optional:
 
 const { db } = require('./db/mongo.config');
 const { Faculty } = require('./model/schema');
+// start
+app.post('seveAllObject'),async(req,res)=>{
+  const data =req.body
+  try {
+    await Faculty.insertMany(data)
+    res.statuse(200).json({massage:'all data seve'})
+  } catch (error) {
+    res.send('eror')
+  }
+}
+
+
+// end
 db();
 
 const member = {
