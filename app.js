@@ -129,8 +129,35 @@ const data = [
     qualification: 'Ph.D',
   },
 ];
-
-
+// start 
+//  Q1
+function post(params) {
+  for(let x of data){
+    Faculty.insertMany(x).then(()=>{
+     console.log( "seve sacsesefully");
+    }).catch((error)=>{
+      console.log(console.error("eroore"));
+    })
+  }
+  
+}
+// post()
+// Q2
+app.get('/',async(req,res)=>{
+  console.log("hiiii");
+const users = await Faculty.find({})
+console.log(res.json(users));
+})
+// Q3
+app.get("/count",async(req,res)=>{
+   let count = await Faculty.countDocuments({}).then((count)=>{
+      console.log(count);
+      res.json(count)
+   }).catch((erore)=>{
+console.log(erore);
+   })
+})
+// Q4
 
 
 
