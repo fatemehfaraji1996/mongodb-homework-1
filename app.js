@@ -1,13 +1,13 @@
 const express = require('express')
+const cors = require('cors')
+const bodyParser =require('body-parser')
+const router = require("express").Router()
+require('dotenv').config()
+const PORT =process.env.APP_PORT ||5000
 const app = express()
 app.use(express.json())
-// const port = 3000
-// app.listen(port,()=>{
-//   console.log('is run');
-// })
-// Q1
-
-
+app.use(bodyParser.text())
+app.use(cors())
 /*
 1- Store all faculty members in a collection called Faculty in your database.
 
@@ -35,18 +35,7 @@ Optional:
 const { db } = require('./db/mongo.config');
 const { Faculty } = require('./model/schema');
 // start
-app.post('seveAllObject'),async(req,res)=>{
-  const data =req.body
-  try {
-    await Faculty.insertMany(data)
-    res.statuse(200).json({massage:'all data seve'})
-  } catch (error) {
-    res.send('eror')
-  }
-}
 
-
-// end
 db();
 
 const member = {
@@ -140,3 +129,15 @@ const data = [
     qualification: 'Ph.D',
   },
 ];
+
+
+
+
+
+
+
+
+
+app.listen(PORT,()=>{
+  console.log("Your port is run");
+})
