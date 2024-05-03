@@ -158,8 +158,38 @@ console.log(erore);
    })
 })
 // Q4
+// app.get('/phd',async(req,res)=>{
+// const phd = await Faculty.find({qualification:'ph.D'}).then((phd)=>{
+//   console.log(phd);
+//   res.send(json(phd))
+// }).catch((erore)=>{
+// console.log(erore);
+// })
+// console.log(res.json(phd));
+// })
 
+// Q5
+app.post('/insert',async(req,res)=>{
+  try {
+    const member = req.body;
+    const newBlog = await Faculty.create(member);
+    res.status(201).json(newBlog);
+    console.log('ok');
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+})
+// Q6
+app.patch('/update/:name',async(req,res)=>{
+console.log(req.params.name)
+res.send(req.params.name)
 
+})
+// Q7
+app.delete('/delet/:name',async(req,res)=>{
+const name = req.body.name
+// const del = await
+})
 
 
 
