@@ -180,15 +180,16 @@ app.post('/insert',async(req,res)=>{
   }
 })
 // Q6
-app.patch('/update/:name',async(req,res)=>{
-console.log(req.params.name)
-res.send(req.params.name)
+app.patch('/update',async(req,res)=>{
+Faculty.findOneAndUpdate({name:'Sivani'})
 
 })
 // Q7
-app.delete('/delet/:name',async(req,res)=>{
-const name = req.body.name
-// const del = await
+app.delete('/delet',async(req,res)=>{
+  Faculty.deleteOne({name:'Mani'}, function(err){
+    console.log(err);
+    res.send('delet')
+  });
 })
 
 
