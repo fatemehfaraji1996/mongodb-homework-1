@@ -131,23 +131,22 @@ const data = [
 ];
 // start 
 //  Q1
-function post(params) {
-  for(let x of data){
-    Faculty.insertMany(x).then(()=>{
-     console.log( "seve sacsesefully");
-    }).catch((error)=>{
-      console.log(console.error("eroore"));
-    })
-  }
-  
-}
+// function post(params) {
+//   for(let x of data){
+//     Faculty.insertMany(x).then(()=>{
+//      console.log( "seve sacsesefully");
+//     }).catch((error)=>{
+//       console.log(console.error("eroore"));
+//     })
+//   }
+// }
 // post()
 // Q2
-app.get('/',async(req,res)=>{
-  console.log("hiiii");
-const users = await Faculty.find({})
-console.log(res.json(users));
-})
+// app.get('/',async(req,res)=>{
+//   console.log("hiiii");
+// const users = await Faculty.find({})
+// console.log(res.json(users));
+// })
 // Q3
 app.get("/count",async(req,res)=>{
    let count = await Faculty.countDocuments({}).then((count)=>{
@@ -158,15 +157,15 @@ console.log(erore);
    })
 })
 // Q4
-// app.get('/phd',async(req,res)=>{
-// const phd = await Faculty.find({qualification:'ph.D'}).then((phd)=>{
-//   console.log(phd);
-//   res.send(json(phd))
-// }).catch((erore)=>{
-// console.log(erore);
-// })
-// console.log(res.json(phd));
-// })
+app.get('/phd',async(req,res)=>{
+const phd = await Faculty.find({qualification:'Ph.D'}).then((phd)=>{
+  console.log(phd);
+  res.send(json(phd))
+}).catch((erore)=>{
+console.log(erore);
+})
+console.log(res.json(phd));
+})
 
 // Q5
 app.post('/insert',async(req,res)=>{
@@ -181,8 +180,8 @@ app.post('/insert',async(req,res)=>{
 })
 // Q6
 app.patch('/update',async(req,res)=>{
-Faculty.findOneAndUpdate({name:'Sivani'})
 
+Faculty.findOneAndUpdate({name:'Sivani'})
 })
 // Q7
 app.delete('/delet',async(req,res)=>{
@@ -191,7 +190,6 @@ app.delete('/delet',async(req,res)=>{
     res.send('delet')
   });
 })
-
 
 
 
